@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  visual:
+    container_name: visual-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: visual-client
+    volumes:
+      - ./:/var/www/html
+      - /var/www/html/dist
+      - /var/www/html/node_modules
+    restart: always
+    ports:
+      - "8881:8080"
+    command: tail -f /dev/null
